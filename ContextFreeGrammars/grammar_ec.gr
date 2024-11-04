@@ -1,0 +1,200 @@
+# Symbols in the grammar are case-sensitive.
+# 
+# This grammar uses a convention that
+#    - terminals are usually lowercase  (president)
+#    - preterminals are capitalized     (Noun)
+#    - other nonterminals are all-caps  (NP)
+# 
+# This convention just makes grammars more readable to humans.  Thus:
+#
+#    - When *you* are writing grammars in questions 3 and 6, you should 
+#      follow this convention unless you have a good reason not to.  
+#
+#    - But your *program* should still work with grammars that don't
+#      follow this convention.  So how can your program reliably tell
+#      the difference between terminal and nonterminal symbols?  If
+#      there is at least one rule for rewriting a symbol, then that
+#      symbol is a nonterminal and should be rewritten.
+#######################
+
+# Rules for creating full sentences.
+
+1	ROOT	S .
+1	ROOT	S !
+0.3	ROOT	is it true that S ?     # mixing terminals and nonterminals is ok.
+1	ROOT	ApposEndS .
+1	ROOT	ApposEndS !
+0.3	ROOT	is it true that ApposEndS ? 
+
+
+# The basic grammar rules.  Here's what the abbreviations stand for:
+#    S  = sentence
+#    NP = noun phrase
+#    VP = verb phrase
+#    PP = prepositional phrase
+#    Det = determiner (sometimes called "article")
+#    Prep = preposition
+#    Adj = adjective
+
+1	S	NP VP
+1	S	ComplexNP VP
+0.2	S	DummySubject CausVerb NP EmbeddedClause
+0.2	S	EmbeddedClause CausVerb NP
+0.5	S	NP_Singular VP_Singular
+0.5	S	NP_Plural VP_Plural
+
+1	EmbeddedClause	SubConj S
+
+1	VP	StrictTransVerb NP
+1	VP	Verb NP
+1	VP	StrictInTransVerb
+1	VP	Verb
+0.1	VP	VP Conj VP
+0.1	VP	RepVerb SubConj NP VP
+0.1	VP	VP PP
+1	VP	AuxP NP
+1	VP	AuxF VP
+
+1	AuxP	AuxVerbPastState
+1	AuxP	AuxVerbPresentState
+
+1	AuxF	AuxVerbFutureState
+
+1	VP_Singular	VerbSingular NP
+1	VP_Plural	VerbPlural NP
+
+1	NP	Det Noun
+1	NP	PropNoun
+0.1	NP	NP Conj NP
+0.1	NP	NP PP
+
+1	ComplexNP	NP ApposChain
+
+1	NP_Singular	DetSingular SingularNoun
+1	NP_Plural	DetPlural PluralNoun
+1	NP_Plural	NP_Singular Conj NP_Singular
+1	NP_Plural	PluralNoun
+
+1	PP	Prep Det LocativeNoun
+0.1	PP	Prep NP
+
+1	ApposChain	, Appos ,
+1	ApposChain	, Appos ApposChain
+
+1	Appos	RelClause
+1	Appos	NumPhrase
+1	Appos	DetAppos Noun
+
+1	ApposEndS	S , Appos
+
+1	NumPhrase	Number years old
+
+1	RelClause	who VP
+1	RelClause	which NP VP
+
+
+# Vocabulary.  Your program can see that "ate" is a terminal
+# symbol because there exists no rule for rewriting it.
+# Any symbol that can rewrite as a terminal (or a string of 
+# terminals, like "chief of staff") is called a "preterminal."  Notice 
+# that a preterminal is a special kind of nonterminal.
+
+1	Verb	ate
+1	Verb	wanted
+1	Verb	kissed
+1	Verb	understood
+0.5	Verb	pickled
+#1	Verb	thought
+1	Verb	worked
+
+1	FutureVerb	eat
+1	FutureVerb	want
+1	FutureVerb	kiss
+
+1	AuxVerbPresentState	is
+1	AuxVerbPastState	was
+
+1	AuxVerbFutureState	will
+
+1	VerbSingular	chooses
+1	VerbPlural	choose
+
+1	StrictTransVerb	perplexed
+
+1	StrictInTransVerb	sighed
+1	StrictInTransVerb	thought
+
+1	CausVerb	perplexed
+
+1	AdVerb	very
+0.1	AdVerb	AdVerb AdVerb
+
+1	RepVerb	understood
+1	RepVerb	thought
+
+1	Det	the
+1	Det	a
+1	Det	every
+
+1	DetAppos	the
+1	DetAppos	a
+
+1	DetSingular	the
+1	DetSingular	a
+1	DetSingular	every
+1	DetSingular	this
+
+1	DetPlural	the
+1	DetPlural	some
+1	DetPlural	many
+1	DetPlural	few
+
+1	Noun	Adj Noun
+1	Noun	president
+1	Noun	sandwich
+0.5	Noun	pickle
+1	Noun	chief of staff
+1	Noun	floor
+#1	Noun	desk
+1	Noun	proposal
+
+1	SingularNoun	president
+1	SingularNoun	chief of staff
+1	SingularNoun	sandwich
+
+1	PluralNoun	citizens
+1	PluralNoun	presidents
+1	PluralNoun	sandwiches
+
+1	LocativeNoun	floor
+1	LocativeNoun	desk
+
+1	PropNoun	Sally
+1	PropNoun	Matthew Blackburn
+1	PropNoun	Taran Agarwal
+1	PropNoun	Jehan Boer
+
+#1	Pronoun	it
+
+1	Adj	AdVerb Adj
+1	Adj	fine
+1	Adj	delicious
+0.8	Adj	perplexed
+0.5	Adj	pickled
+
+1	Prep	with
+1	Prep	on
+1	Prep	under
+1	Prep	in
+
+1	Number	39
+1	Number	49
+1	Number	59
+
+1	Conj	and
+
+1	SubConj	that
+
+1	DummySubject	it
+
+1	Neg	not
