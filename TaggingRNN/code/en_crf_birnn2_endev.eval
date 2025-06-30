@@ -1,0 +1,47 @@
+Cross-entropy: 3.1280 nats (= perplexity 22.828)
+Cross-entropy: 3.0857 nats (= perplexity 21.883)
+Cross-entropy: 2.9000 nats (= perplexity 18.174)
+Cross-entropy: 2.6305 nats (= perplexity 13.881)
+Cross-entropy: 3.0103 nats (= perplexity 20.294)
+Cross-entropy: 2.4094 nats (= perplexity 11.127)
+Cross-entropy: 2.9285 nats (= perplexity 18.699)
+Cross-entropy: 2.2189 nats (= perplexity 9.197)
+Cross-entropy: 2.6923 nats (= perplexity 14.766)
+Cross-entropy: 2.0819 nats (= perplexity 8.020)
+Cross-entropy: 2.4246 nats (= perplexity 11.298)
+Cross-entropy: 1.9804 nats (= perplexity 7.245)
+Cross-entropy: 2.2170 nats (= perplexity 9.180)
+Cross-entropy: 1.8946 nats (= perplexity 6.650)
+Cross-entropy: 2.0752 nats (= perplexity 7.966)
+Cross-entropy: 1.8233 nats (= perplexity 6.193)
+Cross-entropy: 1.9727 nats (= perplexity 7.190)
+Cross-entropy: 1.7649 nats (= perplexity 5.841)
+Cross-entropy: 1.9326 nats (= perplexity 6.907)
+Cross-entropy: 1.6937 nats (= perplexity 5.440)
+Cross-entropy: 1.8984 nats (= perplexity 6.675)
+Cross-entropy: 1.6417 nats (= perplexity 5.164)
+Cross-entropy: 1.8809 nats (= perplexity 6.560)
+Cross-entropy: 1.6045 nats (= perplexity 4.975)
+Cross-entropy: 1.8717 nats (= perplexity 6.500)
+Cross-entropy: 1.5516 nats (= perplexity 4.719)
+Cross-entropy: 1.8644 nats (= perplexity 6.452)
+Cross-entropy: 1.5091 nats (= perplexity 4.523)
+Cross-entropy: 1.8610 nats (= perplexity 6.430)
+Cross-entropy: 1.4730 nats (= perplexity 4.362)
+Cross-entropy: 1.8892 nats (= perplexity 6.614)
+Total training time: 0:19:58
+---
+Wrote tagging to en_crf_birnn2_endev.output
+Cross-entropy: 1.4420 nats (= perplexity 4.229)
+Cross-entropy: 1.8892 nats (= perplexity 6.614)
+Tagging accuracy: all: 35.129%, known: 29.781%, seen: 38.855%, novel: 45.583%
+===
+Cross-entropy: 1.4090 nats (= perplexity 4.092)
+Cross-entropy: 1.3733 nats (= perplexity 3.948)
+Cross-entropy: 1.3414 nats (= perplexity 3.825)
+Total training time: 0:32:19
+---
+Wrote tagging to en_crf_birnn2_endev.output
+Cross-entropy: 1.3414 nats (= perplexity 3.825)
+Tagging accuracy: all: 45.881%, known: 44.824%, seen: 54.727%, novel: 58.564%
+===

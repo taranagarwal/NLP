@@ -1,0 +1,42 @@
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.0.2 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "/Users/taranagarwal/Desktop/JHUFall2024/NLP/homework/nlp-hw7/code/tag.py", line 14, in <module>
+    from eval import model_cross_entropy, viterbi_error_rate, write_tagging, log as eval_log
+  File "/Users/taranagarwal/Desktop/JHUFall2024/NLP/homework/nlp-hw7/code/eval.py", line 15, in <module>
+    from hmm import HiddenMarkovModel
+  File "/Users/taranagarwal/Desktop/JHUFall2024/NLP/homework/nlp-hw7/code/hmm.py", line 31, in <module>
+    torch.manual_seed(1337)
+  File "/Users/taranagarwal/anaconda3/envs/nlp-class/lib/python3.9/site-packages/torch/random.py", line 44, in manual_seed
+    torch.mps.manual_seed(seed)
+  File "/Users/taranagarwal/anaconda3/envs/nlp-class/lib/python3.9/site-packages/torch/mps/__init__.py", line 47, in manual_seed
+    _get_default_mps_generator().manual_seed(seed)
+INFO:corpus:Read 596 tokens from ensup-tiny
+INFO:corpus:Created 23 tag types
+INFO:corpus:Created 331 word types
+./models/en_crf_neural_rnn20_lr0.001_reg0.0001_bs1_endev
+Traceback (most recent call last):
+  File "/Users/taranagarwal/Desktop/JHUFall2024/NLP/homework/nlp-hw7/code/tag.py", line 406, in <module>
+    main()
+  File "/Users/taranagarwal/Desktop/JHUFall2024/NLP/homework/nlp-hw7/code/tag.py", line 341, in main
+    model = new_model_class(train_corpus.tagset, train_corpus.vocab, 
+  File "/Users/taranagarwal/Desktop/JHUFall2024/NLP/homework/nlp-hw7/code/crf_neural.py", line 56, in __init__
+    super().__init__(tagset, vocab, unigram)
+  File "/Users/taranagarwal/Desktop/JHUFall2024/NLP/homework/nlp-hw7/code/crf_backprop.py", line 53, in __init__
+    super().__init__(tagset, vocab, unigram)
+  File "/Users/taranagarwal/Desktop/JHUFall2024/NLP/homework/nlp-hw7/code/crf.py", line 55, in __init__
+    super().__init__(tagset, vocab, unigram)
+  File "/Users/taranagarwal/Desktop/JHUFall2024/NLP/homework/nlp-hw7/code/hmm.py", line 84, in __init__
+    self.init_params()     # create and initialize model parameters
+  File "/Users/taranagarwal/Desktop/JHUFall2024/NLP/homework/nlp-hw7/code/crf_neural.py", line 83, in init_params
+    self.dropout,
+  File "/Users/taranagarwal/anaconda3/envs/nlp-class/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1614, in __getattr__
+    raise AttributeError("'{}' object has no attribute '{}'".format(
+AttributeError: 'ConditionalRandomFieldNeural' object has no attribute 'dropout'
